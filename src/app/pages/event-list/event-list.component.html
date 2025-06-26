@@ -1,0 +1,54 @@
+<p-table [columns]="cols" [value]="events()" [tableStyle]="{ 'min-width': '50rem' }" >
+  <ng-template #caption>
+    <div class="flex items-center justify-between">
+      <span class="text-xl font-bold">Events</span>
+      <p-button (click)="onAddEvent()" icon="pi pi-plus"/>
+    </div>
+  </ng-template>
+  <ng-template #header let-columns>
+    <tr>
+      @for (col of columns; track $index) {
+        <th>
+          {{ col.header }}
+        </th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template #body let-rowData let-columns="columns">
+    <tr>
+      @for (col of columns; track $index) {
+        @switch (col.field) {
+          @case ('title') {
+            <td>
+              <p>{{ rowData[col.field] }}</p>
+              @if (rowData.participants) {
+                <small>Количество участников: {{ rowData.participants }}</small>
+              }
+              @if (rowData.genre) {
+                <small>Жанр: {{ rowData.genre }}</small>
+              }
+            </td>
+          }
+          @case ('eventType') {
+            <td>
+              {{ rowData.eventType === 'sport' ? 'Спортивное мероприятие' : 'Музыкальное мероприятие' }}
+            </td>
+          }
+          @case ('actions') {
+            <td style="width: 130px">
+              <div class="flex justify-between">
+                <p-button (click)="onEditEvent(rowData)" icon="pi pi-pencil"/>
+                <p-button (click)="onRemoveEvent(rowData)" icon="pi pi-trash"/>
+              </div>
+            </td>
+          }
+          @default {
+            <td>
+              {{ rowData[col.field] }}
+            </td>
+          }
+        }
+      }
+    </tr>
+  </ng-template>
+</p-table>

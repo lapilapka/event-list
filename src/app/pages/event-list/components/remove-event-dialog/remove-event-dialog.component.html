@@ -1,0 +1,5 @@
+<p>Вы уверены, что хотите удалить мероприятие "{{ data.title }}"</p>
+<div class="flex gap-3 mt-3 justify-end">
+  <button pButton [outlined]="true" (click)="onCancelClick()">Отмена</button>
+  <button pButton (click)="onOkClick()">Да</button>
+</div>

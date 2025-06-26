@@ -1,0 +1,11 @@
+<form [formGroup]="eventForm" class="flex flex-col gap-3">
+  <input pInputText formControlName="title" placeholder="Название мероприятия"/>
+  <textarea class="w-full h-30" pInputTextarea formControlName="description"
+            placeholder="Описание мероприятия"></textarea>
+  <p-selectbutton formControlName="eventType" [options]="eventTypeOptions"/>
+  <input pInputText formControlName="location" placeholder="Место проведения"/>
+  <input pInputText [formControl]="genre" placeholder="Жанр"/>
+  <button pButton type="submit" pButtonLabel="Submit" [disabled]="eventForm.invalid || !eventForm.dirty"
+          (click)="onSubmit()">{{ data.action === 'add' ? 'Добавить' : 'Сохранить' }}
+  </button>
+</form>
