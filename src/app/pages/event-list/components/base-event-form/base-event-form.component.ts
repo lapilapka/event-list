@@ -24,6 +24,7 @@ export class BaseEventFormComponent {
   config = inject(DynamicDialogConfig);
   data = this.config.data;
   readonly eventForm = new FormGroup<EventForm>({
+    id: new FormControl(this.data.id ?? null),
     title: new FormControl(this.data.title ??'', Validators.required),
     eventType: new FormControl(this.data.eventType ?? null, Validators.required),
     location: new FormControl(this.data.location ?? '', Validators.required),

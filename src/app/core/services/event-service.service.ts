@@ -75,7 +75,7 @@ export class EventServiceService {
       if (editedEvent) {
         this.eventMap.update(prev => {
           const prevMap = new Map(prev);
-          prevMap.set(event.id, editedEvent);
+          prevMap.set(editedEvent.id, editedEvent);
           return prevMap;
         });
       }

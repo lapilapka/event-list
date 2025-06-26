@@ -2,6 +2,7 @@ import {FormControl} from '@angular/forms';
 import {EventType} from './event-type.model';
 
 export interface EventForm {
+  id: FormControl<number | null>;
   title: FormControl<string | null>;
   eventType: FormControl<EventType | null>;
   location: FormControl<string | null>;
